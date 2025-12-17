@@ -18,7 +18,7 @@ curl_close($ch);
 // Decode JSON to array
 $data = json_decode($response, true);
 
-if ($json_data === null) {
+if ($data === null) {
     die('Error decoding the JSON file');
 }
 echo "<ul>\n";
