@@ -16,7 +16,7 @@ if (curl_errno($ch)) {
 curl_close($ch);
 
 var_dump($response); 
-echo "JSON Error: " . json_last_error_msg();
+echo "<pre>" . htmlspecialchars($response) . "</pre>";
 
 // Decode JSON to array
 $data = json_decode($response, true);
