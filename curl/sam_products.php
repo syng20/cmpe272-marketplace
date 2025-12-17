@@ -15,8 +15,6 @@ if (curl_errno($ch)) {
 
 curl_close($ch);
 
-var_dump($response); 
-echo "<pre>" . htmlspecialchars($response) . "</pre>";
 
 // Decode JSON to array
 $data = json_decode($response, true);
@@ -24,11 +22,7 @@ $data = json_decode($response, true);
 if ($data === null) {
     die('Error decoding the JSON file');
 }
-echo "<ul>\n";
+
 $products = $data['products'] ?? [];
-foreach ($products as $user) {
-    echo "<li>" . $user['name'] . " " . $user['price'] . "</li>"; 
-}
-echo "</ul>";
 
 ?>
