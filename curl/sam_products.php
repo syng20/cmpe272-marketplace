@@ -18,4 +18,4 @@ curl_close($ch);
 // Decode JSON to array
 $data = json_decode($response, true);
 
-$products = $data['result'] ?? [];
+$products = $data['products'] ?? [];
