@@ -1,13 +1,13 @@
 /* Root */
 :root {
     /* colors */
-    --bg_color: #FEFAE0;
-    --tab_color: #eae4bf;
-    --shadow_color: #e6dabc; 
-    --outline_color: #D4A373;
-    --hover_color: #ecbd8d; 
-    --title_text_color: #2d0f21; 
-    --body_text_color: #593f4e; 
+    --bg_color: #ede7e3;
+    --tab_color: #adbbd9;
+    --shadow_color: #16697a; 
+    --outline_color: #489fb5;
+    --hover_color: #82c0cc; 
+    --title_text_color: #0f142d; 
+    --body_text_color: #3f4159; 
     
     /* spacing */
     --spacing: 1rem;

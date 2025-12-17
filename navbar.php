@@ -5,9 +5,9 @@
             <ul>
                 
                 <li><a href="index.php">Home</a></li>
-                <li><a href="products.php">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="products.php">All Products</a></li>
+                <li><a href="#">Popular Items</a></li>
+                <li><a href="#">User History</a></li>
             </ul>
         </div>
     </div>
