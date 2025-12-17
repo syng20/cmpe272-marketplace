@@ -1,6 +1,6 @@
 <?php
 
-$url = "syng20.me/productlist.php";
+$url = "https://syng20.me/productlist.php";
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
