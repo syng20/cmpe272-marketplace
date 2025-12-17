@@ -1,0 +1,107 @@
+/* Modern split register card */
+.register-card {
+    width: 70%;
+    min-width: 700px;
+    height: 800px;
+    margin: 4rem auto;
+
+    display: flex;
+    overflow: hidden;
+
+    background-color: var(--bg_color);
+    border: var(--outline_size) solid var(--outline_color);
+    box-shadow: var(--box_shadow_surround);
+}
+
+/* Image side */
+.register-image {
+    width: 50%;
+    padding: 2rem;
+
+    background: linear-gradient(
+        135deg,
+        var(--tab_color),
+        var(--hover_color)
+    );
+
+    color: var(--title_text_color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.register-image h2 {
+    font-size: 2.5em;
+    margin-bottom: 1rem;
+}
+
+.register-image p {
+    font-size: 1.1em;
+}
+
+/* Form side */
+.register-form {
+    width: 50%;
+    padding: 2rem;
+}
+
+.register-form h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* Form elements */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 10px;
+    font-size: 1em;
+    border: var(--outline_size) solid var(--outline_color);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--shadow_color);
+}
+
+/* Button */
+.form-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 12px;
+
+    font-size: 1.1em;
+    background-color: var(--tab_color);
+    border: var(--outline_size) solid var(--outline_color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-button:hover {
+    background-color: var(--hover_color);
+    border-color: var(--shadow_color);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .register-card {
+        flex-direction: column;
+        height: auto;
+        min-width: unset;
+    }
+
+    .register-image,
+    .register-form {
+        width: 100%;
+    }
+}

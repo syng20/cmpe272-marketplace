@@ -1,3 +1,4 @@
+<?php session_start();?>
 <nav class="navbar">
     <div class="container">
         <div class="navbar-links" id="navbar-links">
