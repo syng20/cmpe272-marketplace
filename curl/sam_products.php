@@ -18,4 +18,14 @@ curl_close($ch);
 // Decode JSON to array
 $data = json_decode($response, true);
 
+if ($json_data === null) {
+    die('Error decoding the JSON file');
+}
+echo "<ul>\n";
 $products = $data['products'] ?? [];
+foreach ($products as $user) {
+    echo "<li>" . $user['name'] . " " . $user['price'] . "</li>"; 
+}
+echo "</ul>";
+
+?>
