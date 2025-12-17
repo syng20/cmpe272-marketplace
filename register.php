@@ -65,6 +65,12 @@
                             ?>
                         </div>
                     <?php endif; ?>
+                    <?php if (!empty($_SESSION['register_success'])) : ?>
+                        <div class="form-success" style ="color: green; margin-bottom: 10px; font-weight: bold;">
+                            Registration successful! You can now log in.
+                        </div>
+                        <?php unset($_SESSION['register_success']); ?>
+                    <?php endif; ?>
                     <button type="submit" class="form-button">Register</button>
                 </form>
             </div>

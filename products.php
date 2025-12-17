@@ -17,7 +17,7 @@ $williamProducts = $products;
 
 // sam's include 
 include 'curl/sam_products.php';
-$samProducts = $products; 
+$samProducts = $products;
 
 // Sean's include
 include 'curl/sean_products.php';
@@ -32,13 +32,11 @@ $allProducts = array_merge($williamProducts, $samProducts, $seanProducts, $produ
 // Choose products to display
 if ($selectedCategory === 'spartan') {
     $displayProducts = $williamProducts;
-} 
-else if ($selectedCategory == 'newleaf') {
+} else if ($selectedCategory == 'newleaf') {
     $displayProducts = $samProducts;
-}else if($selectedCategory == 'bakery') {
+} else if ($selectedCategory == 'bakery') {
     $displayProducts = $seanProducts;
-}
-else {
+} else {
     $displayProducts = $allProducts;
 }
 
@@ -119,20 +117,27 @@ if (!empty($searchTerm)) {
             <div id="productbuttoncontainer">
                 <?php if (!empty($displayProducts)) : ?>
                     <?php foreach ($displayProducts as $product) : ?>
-                        <div class="imagebuttonholder">
-                            <div class="imagebutton_i">
-                                <img src="<?= $product['img'] ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                        <a
+                            href="product_page.php?origin=<?= urlencode($product['origin']) ?>&id=<?= urlencode($product['id']) ?>">
+                            <div class="imagebuttonholder">
+                                <div class="imagebutton_i">
+                                    <img
+                                        src="<?= htmlspecialchars($product['img']) ?>"
+                                        alt="<?= htmlspecialchars($product['name']) ?>">
+                                </div>
+
+                                <div class="imagebutton_b">
+                                    <h3 class="product-name"><?= htmlspecialchars($product['name']) ?></h3>
+                                    <p class="price">$<?= number_format($product['price'], 2) ?></p>
+                                </div>
                             </div>
-                            <div class="imagebutton_b">
-                                <h3 class="product-name"><?= htmlspecialchars($product['name']) ?></h3>
-                                <p class="price">$<?= number_format($product['price'], 2) ?></p>
-                            </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
-                <?php else: ?>
+                <?php else : ?>
                     <p>No products found.</p>
                 <?php endif; ?>
             </div>
+
         </div>
     </main>
 </body>

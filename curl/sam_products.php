@@ -25,4 +25,11 @@ if ($data === null) {
 
 $products = $data['products'] ?? [];
 
+
+foreach ($products as $index => &$product) {
+    $product['origin'] = 'newleafapiary';
+    $product['id'] = $index; // track array index as id
+}
+unset($product);
+
 ?>

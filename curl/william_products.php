@@ -19,3 +19,9 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 $products = $data['result'] ?? [];
+
+foreach ($products as &$product) {
+    $product['origin'] = 'spartanmarket';
+}
+unset($product);
+?>

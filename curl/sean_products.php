@@ -37,5 +37,6 @@ foreach ($data as $slug => $p) {
         "name"  => $p["name"] ?? $p["title"] ?? $slug,
         "price" => (float)($p["price"] ?? $p["cost"] ?? 0),
         "img"   => $img,
+        "origin" => "jusobakery"
     ];
 }

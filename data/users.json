@@ -5,5 +5,47 @@
         "email": "test@gmail.com",
         "password": "$2y$10$E72l3OgH8KXSKU\/\/QL1Pa.1Direaf7FDMdn8fD6RI7OynI6imKgey",
         "created_at": "2025-12-17T15:26:39+01:00"
+    },
+    {
+        "id": "user_6943339f2f9cb8.33270002",
+        "username": "tester",
+        "email": "tester@gmail.com",
+        "password": "$2y$10$\/JglSIp4VoAXwwtZY8KZHuP6oU5YwVGZ\/afceUhwTCgdS.Zy0xNou",
+        "created_at": "2025-12-17T23:50:07+01:00"
+    },
+    {
+        "id": "user_694333f37eb0e1.98007296",
+        "username": "test23232",
+        "email": "test23@gmail.com",
+        "password": "$2y$10$1U5AjtWAwrw74.yaqfyzteiN6xs72kvsuVX9KTeT2K0UBuxdAYt8a",
+        "created_at": "2025-12-17T23:51:31+01:00"
+    },
+    {
+        "id": "user_69433413548fa7.95909314",
+        "username": "teer",
+        "email": "teer@gmail.com",
+        "password": "$2y$10$w4mR5xOQQ7LA6Cl\/MvBIzeUUj3F4P7R0SevsBIrBztwTLW12.Twi.",
+        "created_at": "2025-12-17T23:52:03+01:00"
+    },
+    {
+        "id": "user_6943342279b293.74526777",
+        "username": "teeeer",
+        "email": "teeeer@gmail.com",
+        "password": "$2y$10$z3sXG\/y4mzob83TZHSDGAOQStAfPYjodVX3gtcNs86Q..NucGNmxq",
+        "created_at": "2025-12-17T23:52:18+01:00"
+    },
+    {
+        "id": "user_694334498a1477.27695363",
+        "username": "test4",
+        "email": "test4@gmail.com",
+        "password": "$2y$10$0.h4Zzpl32ER3aoabahL0uat8kok6X8l8ujG.X4zjq3vDKWcmguUy",
+        "created_at": "2025-12-17T23:52:57+01:00"
+    },
+    {
+        "id": "user_69433ff7bee672.31485806",
+        "username": "test2",
+        "email": "test2@gmail.com",
+        "password": "$2y$10$r5878VcxpGkzMiEwesrrAuN91npMRNOBp7RCwrX3TCXKEwjC8Sodu",
+        "created_at": "2025-12-18T00:42:47+01:00"
     }
 ]
