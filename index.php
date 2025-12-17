@@ -4,11 +4,11 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title></title>
-   <link href="styles.css" rel="stylesheet">
+   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
     <header> 
-        <h1>Marketplace</h1>
+        <?php include 'navbar.php'; ?>
     </header>
     
     <!-- box selection -->
