@@ -1,6 +1,7 @@
 <?php
-include 'handlers/product_page_handler.php'; // loads $product, $id, $origin
+include 'handlers/product_page_handler.php';
 include 'navbar.php';
+
 // Review file
 $reviewFile = __DIR__ . '/data/reviews.json';
 $productKey = $product['origin'] . ':' . $product['id'];
@@ -73,6 +74,21 @@ setcookie('recently_viewed', json_encode($most_visited), time() + (60 * 60 * 24 
                 <p class="price">$<?= number_format($product['price'], 2) ?></p>
                 <?php if (!empty($product['description'])): ?>
                     <p><?= htmlspecialchars($product['description']) ?></p>
+                <?php endif; ?>
+                <form method="POST" action="/handlers/cart_handler.php">
+                    <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+                    <input type="hidden" name="name" value="<?php echo $product['name']; ?>">
+                    <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
+                    <input type="hidden" name="img" value="<?php echo $product['img']; ?>">
+                    <input type="hidden" name="origin" value="<?php echo $product['origin']; ?>">
+                    <label>Quantity: <input type="number" name="quantity" value="1" min="1"></label>
+                    <button type="submit">Add to Cart</button>
+                </form>
+
+                <?php if (!empty($_SESSION['cart_message'])): ?>
+                    <p style="color:green" class="cart-alert"><?= htmlspecialchars($_SESSION['cart_message']) ?></p>
+                    <?php unset($_SESSION['cart_message']);
+                    ?>
                 <?php endif; ?>
             </div>
         </div>

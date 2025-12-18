@@ -1,0 +1,25 @@
+{
+    "test2": {
+        "1": {
+            "product": {
+                "id": "1",
+                "name": "SJSU Gameday Royal Jersey",
+                "price": "64.99",
+                "img": "https:\/\/images.footballfanatics.com\/san-jose-state-spartans\/mens-gameday-greats-number-1-royal-san-jose-state-spartans-lightweight-basketball-jersey_ss5_p-200939480+u-r981abcxbwg6dbzqihcy+v-8zufjmlgvxfalrxufoig.png?_hv=2&w=400",
+                "origin": "spartanmarket"
+            },
+            "quantity": 2
+        },
+        "0": {
+            "product": {
+                "id": "0",
+                "name": "SJSU Gameday Jersey",
+                "price": "59.99",
+                "img": "https:\/\/images.footballfanatics.com\/san-jose-state-spartans\/mens-gameday-greats-blue-san-jose-state-spartans-lightweight-basketball-jersey_pi4726000_ff_4726175-e6a6ade88b13a9e08009_full.jpg?_hv=2",
+                "origin": "spartanmarket"
+            },
+            "quantity": 2
+        }
+    },
+    "test": []
+}

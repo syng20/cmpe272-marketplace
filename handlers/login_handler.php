@@ -50,5 +50,28 @@ $_SESSION['user'] = [
     'email' => $userFound['email']
 ];
 
+
+// Merge Session Cart To User
+$user = $_SESSION['user']['username'] ?? null;
+
+if ($user && isset($_SESSION['cart'])) {
+    $cart_file = __DIR__ . '/../data/carts.json';
+    $carts = file_exists($cart_file) ? json_decode(file_get_contents($cart_file), true) : [];
+
+    if (!isset($carts[$user])) $carts[$user] = [];
+
+    foreach ($_SESSION['cart'] as $sess_id => $sess_item) {
+        if (isset($carts[$user][$sess_id])) {
+            $carts[$user][$sess_id]['quantity'] += $sess_item['quantity'];
+        } else {
+            $carts[$user][$sess_id] = $sess_item;
+        }
+    }
+
+    unset($_SESSION['cart']);
+    file_put_contents($cart_file, json_encode($carts, JSON_PRETTY_PRINT));
+}
+
+
 header('Location: ../index.php');
 exit;
