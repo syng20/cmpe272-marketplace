@@ -30,8 +30,7 @@ if (!empty($_SESSION['user']) && !empty($productReviews)) {
 // most_visited 
 $v = stripslashes($_COOKIE['mostvisits_array']); 
 $retrieved = json_decode($v, true); 
-$name = $product['origin'].$product['id']; 
-$retrieved[$name]['visits']++; 
+$retrieved[$product['name']]['visits']++; 
 setcookie('mostvisits_array', json_encode($retrieved), 0, $time + 365); 
 
 // recently_array
@@ -50,8 +49,8 @@ foreach ($retrieved as $unit => $unit_array) {
         }
     }
 }
-$retrieved[$name]['visits'] = 1; 
-if (($nz_counter >= 5) && ($retrieved[$name] != $largest_n)) {
+$retrieved[$product['name']]['visits'] = 1; 
+if (($nz_counter >= 5) && ($product['name'] != $largest_n)) {
     $retrieved[$largest_n]['visits'] = 0; 
 }
 setcookie('recently_array', json_encode($retrieved), 0, $time + 365); 
