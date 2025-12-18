@@ -46,7 +46,7 @@ foreach ($retrieved as $unit => $unit_array) {
         $nz_counter++; 
         if ($retrieved[$unit]['visits'] > $largest_v) {
             $largest_n = $unit; 
-            $largest_v = $$retrieved[$unit]['visits']; 
+            $largest_v = $retrieved[$unit]['visits']; 
         }
     }
 }
