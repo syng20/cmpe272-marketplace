@@ -105,10 +105,10 @@ foreach ($most_visited as $unit => $unit_array) {
                 <!-- Categories -->
                 <h3>Filters</h3>
                 <ul class="filter-list">
-                    <li><a href="?category=spartan<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'spartan' ? 'class="active"' : '' ?>>Spartan Market</a></li>
-                    <li><a href="?category=bakery<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'all' ? 'class="active"' : '' ?>>Bakery Market</a></li>
-                    <li><a href="?category=newleaf<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'newleaf' ? 'class="active"' : '' ?>>New Leaf Apiary</a></li>
-                    <li><a href="?category=righttwice<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'righttwice' ? 'class="active"' : '' ?>>Right Twice Market</a></li>
+                    <li><a href="?category=spartan" <?= $selectedCategory === 'spartan' ? 'class="active"' : '' ?>>Spartan Market</a></li>
+                    <li><a href="?category=bakery" <?= $selectedCategory === 'all' ? 'class="active"' : '' ?>>Bakery Market</a></li>
+                    <li><a href="?category=newleaf" <?= $selectedCategory === 'newleaf' ? 'class="active"' : '' ?>>New Leaf Apiary</a></li>
+                    <li><a href="?category=righttwice" <?= $selectedCategory === 'righttwice' ? 'class="active"' : '' ?>>Right Twice Market</a></li>
                 </ul>
             </aside>
 
