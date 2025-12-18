@@ -52,8 +52,8 @@
     </div>
 
     <div class="carousel-controls">
-      <button onclick="prevSlide()">❮</button>
-      <button onclick="nextSlide()">❯</button>
+      <button id="prevBtn">❮</button>
+      <button id="nextBtn">❯</button>
     </div>
   </section>
   <!-- box selection -->
@@ -94,6 +94,7 @@
   <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
+    let autoSlideInterval;
 
     function showSlide(index) {
       slides.forEach(slide => slide.classList.remove('active'));
@@ -110,9 +111,28 @@
       showSlide(currentSlide);
     }
 
-    // Auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      prevSlide();
+      resetAutoSlide();
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      nextSlide();
+      resetAutoSlide();
+    });
+
+    startAutoSlide();
   </script>
+
   <footer>
     <p>Ver 1.1.0</p>
   </footer>
