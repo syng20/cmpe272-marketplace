@@ -32,7 +32,7 @@ $v = stripslashes($_COOKIE['mostvisits_array']);
 $retrieved = json_decode($v, true); 
 $name = $product['origin'].$product['id']; 
 $retrieved[$name]['visits']++; 
-setcookie('visits_array', json_encode($retrieved), 0, $time + 365); 
+setcookie('mostvisits_array', json_encode($retrieved), 0, $time + 365); 
 
 // recently_array
 $v = stripslashes($_COOKIE['recently_array']); 
