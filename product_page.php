@@ -25,35 +25,26 @@ if (!empty($_SESSION['user']) && !empty($productReviews)) {
     }
 }
 
-
-// increase visit counters 
-// most_visited 
-$v = stripslashes($_COOKIE['mostvisits_array']); 
-$retrieved = json_decode($v, true); 
-$retrieved[$product['name']]['visits']++; 
-setcookie('mostvisits_array', json_encode($retrieved), 0, $time + 365); 
-
-// recently_array
-$v = stripslashes($_COOKIE['recently_array']); 
-$retrieved = json_decode($v, true); 
-$nz_counter = 0; 
-$largest_n = ""; 
-$largest_v = 0; 
-foreach ($retrieved as $unit => $unit_array) {
-    if ($retrieved[$unit]['visits'] > 0) {
-        $retrieved[$unit]['visits']++; 
-        $nz_counter++; 
-        if ($retrieved[$unit]['visits'] > $largest_v) {
-            $largest_n = $unit; 
-            $largest_v = $retrieved[$unit]['visits']; 
-        }
+$most_visited = [];
+if (isset($_COOKIE['recently_viewed'])) {
+    $decoded = json_decode($_COOKIE['recently_viewed'], true);
+    if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+        $most_visited = $decoded;
     }
 }
-$retrieved[$product['name']]['visits'] = 1; 
-if (($nz_counter >= 5) && ($product['name'] != $largest_n)) {
-    $retrieved[$largest_n]['visits'] = 0; 
+
+$current = [
+    'visits' => 1
+];
+
+foreach ($most_visited as $unit => $unit_array) {
+    if ($unit == $product['name']) {
+        $current['visits'] = $unit_array['visits'] + 1;
+    }
 }
-setcookie('recently_array', json_encode($retrieved), 0, $time + 365); 
+
+$most_visited = [$product['name'] => $current] + $most_visited;
+setcookie('recently_viewed', json_encode($most_visited), time() + (60 * 60 * 24 * 7));
 
 
 ?>

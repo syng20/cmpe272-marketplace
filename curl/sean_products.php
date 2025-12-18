@@ -10,7 +10,6 @@ $response = curl_exec($ch);
 if (curl_errno($ch)) {
     die("cURL Error: " . curl_error($ch));
 }
-curl_close($ch);
 
 $data = json_decode($response, true) ?? [];
 

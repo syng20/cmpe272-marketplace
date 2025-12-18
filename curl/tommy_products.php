@@ -13,8 +13,6 @@ if (curl_errno($ch)) {
     exit;
 }
 
-curl_close($ch);
-
 // Decode JSON to array
 $data = json_decode($response, true);
 

@@ -1,8 +1,6 @@
 <?php
 // Filter States
 $selectedCategory = $_GET['category'] ?? 'all';
-$sortOrder = $_GET['sort'] ?? '';
-$searchTerm = $_GET['search'] ?? '';
 
 // Initialize product arrays
 $allProducts = [];
@@ -43,18 +41,29 @@ if ($selectedCategory === 'spartan') {
     $displayProducts = $allProducts;
 }
 
-// Sort products if requested
-if ($sortOrder === 'lowhigh') {
-    usort($displayProducts, fn($a, $b) => $a['price'] <=> $b['price']);
-} elseif ($sortOrder === 'highlow') {
-    usort($displayProducts, fn($a, $b) => $b['price'] <=> $a['price']);
+// Cookies
+if (isset($_COOKIE['recently_viewed'])) {
+    $v = stripslashes($_COOKIE['recently_viewed']);
+    $recently_visited = json_decode($v, true);
+} else {
+    $recently_visited = array();
 }
 
-// Filter products by search term using regex
-if (!empty($searchTerm)) {
-    $displayProducts = array_filter($displayProducts, function ($product) use ($searchTerm) {
-        return preg_match("/" . preg_quote($searchTerm, '/') . "/i", $product['name']);
-    });
+$history = [];
+foreach ($recently_visited as $unit => $unit_array) {
+    foreach ($displayProducts as $product) {
+        if ($product['name'] == $unit) {
+            $history[] = [
+                "id" => $product['id'],
+                "origin" => $product['origin'],
+                "name" => $product['name'],
+                "price" => $product['price'],
+                "img" => $product['img'],
+                "origin" => $product['origin'],
+            ];
+            break;
+        }
+    }
 }
 
 ?>
@@ -76,32 +85,16 @@ if (!empty($searchTerm)) {
     </header>
 
     <main class="container">
-        <h2 class="page-title">Marketplace Listings</h2>
+        <h2 class="page-title">History</h2>
 
         <div class="market-layout">
             <!-- Sidebar Filters -->
             <aside id="filter-sidebar">
-                <!-- Search Form -->
-                <h3>Search Products</h3>
-                <form method="GET" action="">
-                    <input type="hidden" name="category" value="<?= htmlspecialchars($selectedCategory) ?>">
-                    <input type="hidden" name="sort" value="<?= htmlspecialchars($sortOrder) ?>">
-                    <input type="text" name="search" value="<?= htmlspecialchars($searchTerm) ?>" placeholder="Product name">
-                    <button type="submit">Search</button>
-                </form>
-
 
                 <!-- Clear Filters -->
-                <?php if ($selectedCategory !== 'all' || $sortOrder || !empty($searchTerm)) : ?>
+                <?php if ($selectedCategory !== 'all') : ?>
                     <a href="?category=all" class="clear-filters">Clear Filters</a>
                 <?php endif; ?>
-
-                <!-- Sort Buttons -->
-                <h3>Sort By Price</h3>
-                <ul class="filter-list">
-                    <li><a href="?sort=lowhigh<?= $selectedCategory !== 'all' ? "&category=$selectedCategory" : '' ?>" <?= $sortOrder === 'lowhigh' ? 'class="active"' : '' ?>>Low → High</a></li>
-                    <li><a href="?sort=highlow<?= $selectedCategory !== 'all' ? "&category=$selectedCategory" : '' ?>" <?= $sortOrder === 'highlow' ? 'class="active"' : '' ?>>High → Low</a></li>
-                </ul>
 
                 <!-- Categories -->
                 <h3>Filters</h3>
@@ -111,16 +104,12 @@ if (!empty($searchTerm)) {
                     <li><a href="?category=newleaf<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'newleaf' ? 'class="active"' : '' ?>>New Leaf Apiary</a></li>
                     <li><a href="?category=righttwice<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'righttwice' ? 'class="active"' : '' ?>>Right Twice Market</a></li>
                 </ul>
-
-
-
-
             </aside>
 
             <!-- Product Grid -->
             <div id="productbuttoncontainer">
-                <?php if (!empty($displayProducts)) : ?>
-                    <?php foreach ($displayProducts as $product) : ?>
+                <?php if (!empty($history)) : ?>
+                    <?php foreach ($history as $product) : ?>
                         <a
                             href="product_page.php?origin=<?= urlencode($product['origin']) ?>&id=<?= urlencode($product['id']) ?>">
                             <div class="imagebuttonholder">
@@ -144,6 +133,12 @@ if (!empty($searchTerm)) {
 
         </div>
     </main>
+
+    <?php
+    foreach ($recently_visited as $unit => $unit_array) {
+        echo "<script>console.log('" . $unit . " " . $unit_array['visits'] . "');</script>";
+    }
+    ?>
 </body>
 
 </html>

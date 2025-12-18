@@ -8,7 +8,7 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="products.php">All Products</a></li>
                 <li><a href="popular_items.php">Popular Items</a></li>
-                <li><a href="#">User History</a></li>
+                <li><a href="history.php">User History</a></li>
             </ul>
         </div>
     </div>
