@@ -65,12 +65,14 @@ if (!isset($_COOKIE["first_visit"])) {
   $mostvisits = array();
 
   $temp_name = ""; 
-  $temp = array('origin' => 0, 'id' => 0, 'visits' => 0);
+  $temp = array('origin' => 0, 'id' => 0, 'price' => 0, 'img' => 0, 'description' => 0, 'visits' => 0);
   foreach ($allProducts as $product) {
     $temp['origin'] = $product['origin']; 
     $temp['id'] = $product['id']; 
-    $temp_name = $product['origin'].$product['id']; 
-    $mostvisits[$tempname] = $temp; 
+    $temp['price'] = $product['price']; 
+    $temp['img'] = $product['img']; 
+    $temp['description'] = $product['description']; 
+    $mostvisits[$product['name']] = $temp; 
   }
 
   $mostvisitsJson = json_encode($mostvisits); 
