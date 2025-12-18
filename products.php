@@ -23,11 +23,12 @@ $samProducts = $products;
 include 'curl/sean_products.php';
 $seanProducts = $products;
 
-// TEMP: replace with your other products //this is how i included my products
-include 'curl/william_products.php';
+// Tommy's include
+include 'curl/tommy_products.php';
+$tommyProducts = $products;
 
 // Merge after all product calls (please implement curl to your company website)
-$allProducts = array_merge($williamProducts, $samProducts, $seanProducts, $products);
+$allProducts = array_merge($williamProducts, $samProducts, $seanProducts, $tommyProducts);
 
 // Choose products to display
 if ($selectedCategory === 'spartan') {
@@ -36,6 +37,8 @@ if ($selectedCategory === 'spartan') {
     $displayProducts = $samProducts;
 } else if ($selectedCategory == 'bakery') {
     $displayProducts = $seanProducts;
+} else if ($selectedCategory == 'righttwice') {
+    $displayProducts = $tommyProducts;
 } else {
     $displayProducts = $allProducts;
 }
@@ -105,7 +108,7 @@ if (!empty($searchTerm)) {
                     <li><a href="?category=spartan<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'spartan' ? 'class="active"' : '' ?>>Spartan Market</a></li>
                     <li><a href="?category=bakery<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'all' ? 'class="active"' : '' ?>>Bakery Market</a></li>
                     <li><a href="?category=newleaf<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'newleaf' ? 'class="active"' : '' ?>>New Leaf Apiary</a></li>
-                    <li><a href="?category=cat3<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'cat3' ? 'class="active"' : '' ?>>Tommy Market</a></li>
+                    <li><a href="?category=righttwice<?= $sortOrder ? "&sort=$sortOrder" : '' ?>" <?= $selectedCategory === 'righttwice' ? 'class="active"' : '' ?>>Right Twice Market</a></li>
                 </ul>
 
 
