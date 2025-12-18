@@ -139,6 +139,7 @@ foreach ($recently_visited as $unit => $unit_array) {
         echo "<script>console.log('" . $unit . " " . $unit_array['visits'] . "');</script>";
     }
     ?>
+    
 </body>
 
 </html>
