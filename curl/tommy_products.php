@@ -39,7 +39,7 @@ foreach ($data as $slug => $p) {
     }
 
     $products[] = [
-        "id"    => $slug,
+        "id"    => $p["id"],
         "name"  => $p["model"] ?? $p["title"] ?? $slug,
         "price" => (float)($p["price"] ?? $p["cost"] ?? 0),
         "img"   => $img,
