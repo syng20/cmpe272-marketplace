@@ -29,19 +29,22 @@ $data = json_decode($response, true);
 $products = [];
 
 $base = "https://plb.bfm.mybluehost.me/righttwice/";
+$index = 0;
 
 foreach ($data as $slug => $p) {
     $img = $p["img"] ?? $p["image"] ?? "";
 
-    // If it's a relative path like "assets/img/coffee cake.png", make it absolute
     if ($img !== "" && !preg_match('#^https?://#i', $img)) {
         $img = rtrim($base, "/") . "/" . ltrim($img, "/");
     }
 
     $products[] = [
-        "id"    => $p["id"],
-        "name"  => $p["model"] ?? $p["title"] ?? $slug,
-        "price" => (float)($p["price"] ?? $p["cost"] ?? 0),
-        "img"   => $img,
+        "id"     => $index,
+        "name"   => $p["name"] ?? $p["title"] ?? $slug,
+        "price"  => (float)($p["price"] ?? $p["cost"] ?? 0),
+        "img"    => $img,
+        "origin" => "righttwice"
     ];
+
+    $index++;
 }

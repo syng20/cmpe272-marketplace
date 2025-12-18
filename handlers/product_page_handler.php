@@ -15,8 +15,10 @@ if ($origin === 'spartanmarket') {
     include 'curl/sam_products.php';
 } elseif ($origin === 'jusobakery') {
     include 'curl/sean_products.php';
+} elseif ($origin === 'righttwice') {
+    include 'curl/tommy_products.php';
 } else {
     die('Invalid origin specified');
 }
 
-    $product = $products[$id];
+$product = $products[$id];
