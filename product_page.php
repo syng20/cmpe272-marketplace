@@ -25,6 +25,38 @@ if (!empty($_SESSION['user']) && !empty($productReviews)) {
     }
 }
 
+
+// increase visit counters 
+// most_visited 
+$v = stripslashes($_COOKIE['mostvisits_array']); 
+$retrieved = json_decode($v, true); 
+$name = $product['origin'].$product['id']; 
+$retrieved[$name]['visits']++; 
+setcookie('visits_array', json_encode($retrieved), 0, $time + 365); 
+
+// recently_array
+$v = stripslashes($_COOKIE['recently_array']); 
+$retrieved = json_decode($v, true); 
+$nz_counter = 0; 
+$largest_n = ""; 
+$largest_v = 0; 
+foreach ($retrieved as $unit => $unit_array) {
+    if ($unit_array['value'] > 0) {
+        $unit_array['value']++; 
+        $nz_counter++; 
+        if ($unit_array['value'] > $largest_v) {
+            $largest_n = $unit; 
+            $largest_v = $unit_array['value']; 
+        }
+    }
+}
+$retrieved[$name]['visits'] = 1; 
+if (($nz_counter >= 5) && ($retrieved[$name] != $largest_n)) {
+    $retrieved[$largest_n]['visits'] = 0; 
+}
+setcookie('recently_array', json_encode($retrieved), 0, $time + 365); 
+
+
 ?>
 
 <!DOCTYPE html>
