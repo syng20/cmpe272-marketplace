@@ -56,6 +56,34 @@ if (!empty($searchTerm)) {
         return preg_match("/" . preg_quote($searchTerm, '/') . "/i", $product['name']);
     });
 }
+
+// initial set-up for visit-tracking cookies
+if (!isset($_COOKIE["first_visit"])) {
+  setcookie("first_visit", 1, time() + 365); 
+  // most visited 
+  // increase, sort by value 
+  $mostvisits = array();
+
+  $temp_name = ""; 
+  $temp = array('origin' => 0, 'id' => 0, 'visits' => 0);
+  foreach ($allProducts as $product) {
+    $temp['origin'] = $product['origin']; 
+    $temp['id'] = $product['id']; 
+    $temp_name = $product['origin'].$product['id']; 
+    $mostvisits[$tempname] = $temp; 
+  }
+
+  $mostvisitsJson = json_encode($mostvisits); 
+  setcookie('mostvisits_array', $mostvisitsJson, time() + 365); 
+  // most recently visited 
+  // set current page to 1, increase all non-zero values 
+  // if number of non-zero values > 5, set largest value to 0
+  $recently = array(); 
+  $recentlyJson = json_encode($recently); 
+  setcookie('recently_array', $recentlyJson, time() + 365); 
+}
+
+
 ?>
 
 <!DOCTYPE html>

@@ -124,6 +124,6 @@
 
 .price {
     font-size: 1.2em;
-    color: var(--hover_color);
+    color: var(--outline_color);
     font-weight: bold;
 }
