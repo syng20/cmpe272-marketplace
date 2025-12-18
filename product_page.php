@@ -41,12 +41,12 @@ $nz_counter = 0;
 $largest_n = ""; 
 $largest_v = 0; 
 foreach ($retrieved as $unit => $unit_array) {
-    if ($unit_array['value'] > 0) {
-        $unit_array['value']++; 
+    if ($unit_array['visits'] > 0) {
+        $unit_array['visits']++; 
         $nz_counter++; 
-        if ($unit_array['value'] > $largest_v) {
+        if ($unit_array['visits'] > $largest_v) {
             $largest_n = $unit; 
-            $largest_v = $unit_array['value']; 
+            $largest_v = $unit_array['visits']; 
         }
     }
 }
